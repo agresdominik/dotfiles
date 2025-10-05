@@ -14,8 +14,8 @@ if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nvim'
  fi
 
- # go
-export PATH=$HOME/go/bin:$PATH
+# go
+export PATH=/usr/local/go/bin:$PATH
 
 # pyenv 
 export PYENV_ROOT="$HOME/.pyenv"
