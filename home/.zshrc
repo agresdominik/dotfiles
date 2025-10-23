@@ -5,6 +5,14 @@ HIST_STAMPS="dd.mm.yyyy"
 plugins=(git sudo)
 source $ZSH/oh-my-zsh.sh
 
+# -- Linux Specific --
+
+if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
+    startx
+fi
+
+
+
 # -- Local Setup ---
 
 # Preferred editor for local and remote sessions
@@ -14,23 +22,31 @@ if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nvim'
  fi
 
+
+# -- Env Paths ---
+
 # go
-export PATH=/usr/local/go/bin:$PATH
+#export PATH=/usr/local/go/bin:$PATH
 
 # pyenv 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init --path)"
+#eval "$(pyenv init -)"
 
 # pipx
-export PATH="$PATH:/Users/agres/.local/bin"
+#export PATH="$PATH:/Users/agres/.local/bin"
+#export PATH="$HOME/.local/bin:$PATH"
+# pipx Linux
 export PATH="$HOME/.local/bin:$PATH"
 
+
 # bun
-[ -s "/Users/agres/.bun/_bun" ] && source "/Users/agres/.bun/_bun"
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+#[ -s "/Users/agres/.bun/_bun" ] && source "/Users/agres/.bun/_bun"
+#export BUN_INSTALL="$HOME/.bun"
+#export PATH="$BUN_INSTALL/bin:$PATH"
+
+# -- Customization --
 
 # Alais: ls to run tree (without any flags)
 unalias ls 2>/dev/null 
