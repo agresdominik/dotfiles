@@ -132,4 +132,16 @@ input * {
 	xkb_variant nodeadkeys
 }
 
+input "1452:641:Apple_SPI_Trackpad" {
+    pointer_accel -0.1
+    natural_scroll enabled
+    scroll_factor 0.3
+}
+
+output eDP-1 {
+    scale 1.65
+    scale_filter linear
+}
+
+
 include /etc/sway/config.d/*
