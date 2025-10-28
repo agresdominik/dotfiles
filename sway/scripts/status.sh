@@ -4,5 +4,5 @@ cpu=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {printf "
 bat=$(cat /sys/class/power_supply/macsmc-battery/capacity 2>/dev/null || echo "N/A")
 time=$(date "+%d.%m %H:%M:%S")
 
-echo "CPU: $cpu | MEM: $mem | BAT: $bat% | $time"
+echo "$USER | CPU: $cpu | MEM: $mem | BAT: $bat% | $time"
 

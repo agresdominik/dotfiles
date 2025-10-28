@@ -5,7 +5,7 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu wmenu-run
+set $menu wmenu-run -l 5
 
 # Font
 font pango:MesloLGL Nerd Font Mono 10
@@ -17,14 +17,8 @@ output * bg /home/agres/.config/sway/wallpaper/wallpaper.jpg fill
 gaps inner 2 
 gaps outer 2
 
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+# Screen Locker
+exec_always /home/agres/.config/sway/scripts/lock-sway.sh
 
 # Key bindings
     bindsym $mod+Return exec $term
@@ -33,6 +27,7 @@ gaps outer 2
     floating_modifier $mod normal
     bindsym $mod+Shift+r reload
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+q exec /home/agres/.config/sway/scripts/lock-sway-instant.sh
 
 # Moving around:
     bindsym $mod+$left focus left
@@ -143,5 +138,12 @@ output eDP-1 {
     scale_filter linear
 }
 
+# Opacity Settings
+for_window [app_id="Alacritty"] opacity 0.98
+
+# Border Colors
+client.focused          #00b5af #00b5af #fdf6e3 #073642
+client.focused_inactive #073642 #073642 #fdf6e3 #073642
+client.unfocused        #073642 #073642 #fdf6e3 #073642
 
 include /etc/sway/config.d/*
