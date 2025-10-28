@@ -63,3 +63,17 @@ alias lsgit='git status --porcelain | cut -c 4- | xargs ls -l'
 
 # Alias: wifi to print qr code in terminal from file (device adjustable)
 alias wifi='cat /Users/agres/Projects/python_lang/wifi_qr/wifi_password.txt | qr --asci'
+
+# Alias: connect and disconnect bluetooth headphones
+#alias airpods-connect='bluetoothctl --controller 6C:2F:80:E0:88:8B connect 80:95:3A:DC:8E:41'
+alias airpods-connect='echo -e "select 12:34:56:78:9A:BC\nconnect 80:95:3A:DC:8E:41" | bluetoothctl >> /dev/null'
+#alias airpods-disconnect='bluetoothctl --controller 6C:2F:80:E0:88:8B disconnect 80:95:3A:DC:8E:41'
+alias airpods-disconnect='echo -e "select 12:34:56:78:9A:BC\ndisconnect 80:95:3A:DC:8E:41" | bluetoothctl >> /dev/null'
+alias airpods='echo -e "select 12:34:56:78:9A:BC\ninfo 80:95:3A:DC:8E:41" | bluetoothctl | grep "Connected: "'
+
+# Alias: avoid nano
+alias nano=nvim
+
+# Alias quick mount network smdb drive
+alias md0='sudo mount --mkdir -t cifs //192.168.0.200/MD0 /mnt/md0 -o username=agres'
+

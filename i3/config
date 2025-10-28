@@ -7,8 +7,9 @@ font pango:MesloLGL Nerd Font Mono 8
 
 
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
+exec --no-startup-id xautolock -time 30 -locker "/home/agres/.config/i3/scripts/lock.sh"
 
 # Keyboard quick buttons
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -122,7 +123,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # Locking the screen with i3lock
-bindsym $mod+q exec --no-startup-id "i3lock --show-failed-attempts --color 00b5af"  
+bindsym $mod+q exec --no-startup-id "/home/agres/.config/i3/scripts/lock.sh"  
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

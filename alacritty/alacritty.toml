@@ -1,0 +1,14 @@
+[font]
+size = 8.0
+
+[font.bold]
+family = "MesloLGL Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "MesloLGL Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "MesloLGL Nerd Font Mono"
+style = "Regular"
