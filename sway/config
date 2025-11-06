@@ -130,6 +130,7 @@ bar {
 input * {
 	xkb_layout de
 	xkb_variant nodeadkeys
+    xkb_options altwin:swap_alt_win
 }
 
 input "1452:641:Apple_SPI_Trackpad" {
