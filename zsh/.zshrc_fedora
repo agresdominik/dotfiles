@@ -1,0 +1,7 @@
+# -- Env Paths ---
+
+export GOPATH=$HOME/.local/go/
+export GOBIN=$HOME/.local/go/bin 
+export PATH=$PATH:$GOBIN
+export PATH="$HOME/.local/bin:$PATH"
+
