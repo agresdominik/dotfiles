@@ -1,5 +1,9 @@
-# -- Env Paths ---
+# Start on boot
+if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
+    startx
+fi
 
+# -- Env Paths ---
 export GOPATH=$HOME/.local/go/
 export GOBIN=$HOME/.local/go/bin 
 export PATH=$PATH:$GOBIN

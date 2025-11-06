@@ -12,20 +12,12 @@ case "$HOST" in
     fedora-mac) source ~/.zshrc_fedora ;;
 esac
 
-# Start on boot
-if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
-    exec sway
-fi
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nvim'
  else
    export EDITOR='nvim'
  fi
-
-
-# -- Customization --
 
 # Alais: ls to run tree (without any flags)
 unalias ls 2>/dev/null 
