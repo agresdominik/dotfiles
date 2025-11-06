@@ -1,0 +1,16 @@
+#!/bin/bash
+
+origin_url=$(git remote get-url origin 2>/dev/null)
+
+if [[ "$origin_url" == *"github.com"* ]]; then
+
+    user_repo=$(echo "$origin_url" | sed -E 's#.*github.com[:/](.*)\.git#\1#')
+    gitea_url="git@192.168.0.212:${user_repo}.git"
+
+    if git remote -v | grep -q "$gitea_url"; then
+        exit 0
+    fi
+    
+    git remote set-url --add --push origin "$gitea_url"
+    git remote set-url --add --push origin "$origin_url"
+fi
