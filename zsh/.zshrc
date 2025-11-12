@@ -12,6 +12,9 @@ case "$HOST" in
     fedora-mac) source ~/.zshrc_fedora ;;
 esac
 
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nvim'
@@ -41,8 +44,14 @@ alias airpods='echo -e "info 80:95:3A:DC:8E:41" | bluetoothctl | grep "Connected
 alias nano=nvim
 
 # Alias quick mount network smdb drive
-alias md0='sudo mount --mkdir -t cifs //192.168.0.200/MD0 /mnt/md0 -o username=agres'
+alias md0='sudo mount --mkdir -t cifs //192.168.0.200/MD0 /mnt/md0 -o username=agres,uid=$(id -u),gid=$(id -g)'
 
 # Load ssh keys in terminal
 alias loadssh='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
+
+# Tmux aliases
+alias ta='tmux attach -t'
+alias tn='tmux new -s'
+alias tl='tmux ls'
+alias tk='tmux kill-session -t'
 

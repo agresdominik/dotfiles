@@ -77,7 +77,7 @@ bindsym $mod+space focus mode_toggle
 set $ws1 "1:Code"
 set $ws2 "2:Term"
 set $ws3 "3"
-set $ws4 "4"
+set $ws4 "4:VM"
 set $ws5 "5:Web"
 set $ws6 "6:Mail"
 set $ws7 "7:Music"
@@ -203,6 +203,9 @@ exec --no-startup-id feh --bg-scale /home/agres/.config/i3/wallpaper/wallpaper.j
 # Disable screen from going black after 10 mins to 3 hours
 exec --no-startup-id xset s 7200 7200
 exec --no-startup-id xset dpms 7200 7200 7200
+# Slight Transparency
+exec --no-startup-id picom
+
 
 # Window overlay theme
 client.focused          #00b894   #00675a   #ffffff   #00b894   #00675a
