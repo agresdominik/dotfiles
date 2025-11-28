@@ -205,7 +205,8 @@ exec --no-startup-id xset s 7200 7200
 exec --no-startup-id xset dpms 7200 7200 7200
 # Slight Transparency
 exec --no-startup-id picom
-
+# Start notification tool
+exec --no-startup-id dunst
 
 # Window overlay theme
 client.focused          #00b894   #00675a   #ffffff   #00b894   #00675a
