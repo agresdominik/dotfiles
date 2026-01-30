@@ -55,3 +55,4 @@ alias tn='tmux new -s'
 alias tl='tmux ls'
 alias tk='tmux kill-session -t'
 
+export GPG_TTY=$(tty)
