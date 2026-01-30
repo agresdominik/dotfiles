@@ -15,7 +15,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym --release $mod+Shift+S exec --no-startup-id sh -c '/home/agres/.config/i3/scripts/focused-monitor.sh | xclip -selection clipboard -t image/png'
-bindsym --release $mod+Shift+Ctrl+S exec --no-startup-id sh -c '/home/agres/.config/i3/scripts/focused-monitor.sh ~/pictures/$(date +%Y-%m-%d_%H-%M-%S).png'
+bindsym --release $mod+Shift+Ctrl+S exec --no-startup-id sh -c '/home/agres/.config/i3/scripts/focused-monitor.sh ~/other/pictures/$(date +%Y-%m-%d_%H-%M-%S).png'
 
 floating_modifier $mod
 tiling_drag modifier titlebar
@@ -76,12 +76,12 @@ bindsym $mod+space focus mode_toggle
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:Code"
 set $ws2 "2:Term"
-set $ws3 "3"
+set $ws3 "3:Term"
 set $ws4 "4:VM"
 set $ws5 "5:Web"
 set $ws6 "6:Mail"
-set $ws7 "7:Music"
-set $ws8 "8:Chat"
+set $ws7 "7:Games"
+set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
@@ -181,14 +181,14 @@ bar {
 }
 
 # Hard defined workspace placement
-workspace 1 output DisplayPort-0
-workspace 2 output DisplayPort-0
-workspace 3 output DisplayPort-0
-workspace 4 output DisplayPort-0
-workspace 5 output HDMI-A-0
-workspace 6 output HDMI-A-0
-workspace 7 output HDMI-A-0
-workspace 8 output HDMI-A-1
+workspace $ws1 output DisplayPort-0
+workspace $ws2 output DisplayPort-0
+workspace $ws3 output DisplayPort-0
+workspace $ws4 output DisplayPort-0
+workspace $ws5 output HDMI-A-0
+workspace $ws6 output HDMI-A-0
+workspace $ws7 output HDMI-A-0
+#workspace $ws8 output HDMI-A-1
 
 # Load Xresources file
 exec --no-startup-id xrdb -merge ~/.Xresources
@@ -208,10 +208,24 @@ exec --no-startup-id picom
 # Start notification tool
 exec --no-startup-id dunst
 
-# Window overlay theme
-client.focused          #00b894   #00675a   #ffffff   #00b894   #00675a
-client.focused_inactive #303030   #1c1c1c     #cccccc    #303030    #1c1c1c
-client.unfocused        #1c1c1c   #000000     #999999    #1c1c1c    #000000
-client.urgent           #ff5f5f   #870000     #ffffff    #ff5f5f    #870000
-client.placeholder      #000000   #000000     #ffffff    #000000    #000000
+default_border pixel 1
+default_floating_border normal 0
 
+# Window overlay theme
+set $g0 #111111
+set $g1 #1A1A1A
+set $g2 #2A2A2A
+set $g3 #3A3A3A
+set $g4 #4A4A4A
+set $g5 #BFBFBF
+set $g6 #E6E6E6
+set $accent #808080
+
+# --- Window decoration colors ---
+# Format: client.<state> <border> <background> <text> <indicator> <child_border>
+client.focused          $g2 $g2 $g6 $accent $g2
+client.focused_inactive $g1 $g1 $g5 $g3    $g1
+client.unfocused        $g0 $g0 $g5 $g3    $g0
+client.urgent           #5F1F1F #5F1F1F $g6 #B35C5C #5F1F1F
+client.placeholder      $g0 $g0 $g5 $g3    $g0
+client.background       $g0
