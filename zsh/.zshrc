@@ -56,3 +56,7 @@ alias tl='tmux ls'
 alias tk='tmux kill-session -t'
 
 export GPG_TTY=$(tty)
+
+# Fix unreadable color pallete for ExFat File systems
+LS_COLORS="$LS_COLORS:ow=01;36:"
+export LS_COLORS
