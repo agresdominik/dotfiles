@@ -5,7 +5,19 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu wmenu-run -l 5
+set $menu wmenu-run -l 5 -N 000000ff -n ffffffff -M 00675aff -m ffffffff -S 00675aff -s ffffffff
+
+# Workspace Names
+set $ws1 "1: Code"
+set $ws2 "2: Term"
+set $ws3 "3: Term"
+set $ws4 "4: VM"
+set $ws5 "5: Web"
+set $ws6 "6: Mail"
+set $ws7 "7: Games"
+set $ws8 "8: Other"
+set $ws9 "9: Other"
+set $ws10 "10: Other"
 
 # Font
 font pango:MesloLGL Nerd Font Mono 10
@@ -48,27 +60,30 @@ exec_always /home/agres/.config/sway/scripts/lock-sway.sh
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
 
+# Stop focus from wrapping around edges (stay on last window in that direction)
+focus_wrapping no
+
 # Workspaces:
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+1 workspace $ws1
+    bindsym $mod+2 workspace $ws2
+    bindsym $mod+3 workspace $ws3
+    bindsym $mod+4 workspace $ws4
+    bindsym $mod+5 workspace $ws5
+    bindsym $mod+6 workspace $ws6
+    bindsym $mod+7 workspace $ws7
+    bindsym $mod+8 workspace $ws8
+    bindsym $mod+9 workspace $ws9
+    bindsym $mod+0 workspace $ws10
+    bindsym $mod+Shift+1 move container to workspace $ws1
+    bindsym $mod+Shift+2 move container to workspace $ws2
+    bindsym $mod+Shift+3 move container to workspace $ws3
+    bindsym $mod+Shift+4 move container to workspace $ws4
+    bindsym $mod+Shift+5 move container to workspace $ws5
+    bindsym $mod+Shift+6 move container to workspace $ws6
+    bindsym $mod+Shift+7 move container to workspace $ws7
+    bindsym $mod+Shift+8 move container to workspace $ws8
+    bindsym $mod+Shift+9 move container to workspace $ws9
+    bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Layout stuff:
     bindsym $mod+b splith
@@ -106,15 +121,17 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
     # Special keys to adjust brightness via brightnessctl
-    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 10%-
-    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 10%+
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # bindsym --locked button exec brightnessctl --device='kbd_backlight' set +10%
+    # bindsym --locked button exec brightnessctl --device='kbd_backlight' set -10%
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
 # Status Bar:
 bar {
     position top
-    status_command while /home/agres/.config/sway/scripts/status.sh; do sleep 1; done
+    status_command while /home/agres/.config/sway/scripts/status.sh; do sleep 0.5; done
     colors {
         background #000000
         statusline #ffffff
@@ -151,6 +168,10 @@ output eDP-1 {
 
 # Opacity Settings
 for_window [app_id="Alacritty"] opacity 0.98
+
+# Show a slightly thicker border so focused window color is more obvious
+default_border pixel 3
+default_floating_border pixel 3
 
 # Window overlay theme
 client.focused          #00b894   #00675a   #ffffff   #00b894   #00675a
