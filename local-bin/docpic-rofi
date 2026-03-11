@@ -1,0 +1,8 @@
+#!/bin/sh
+file=$(
+  cd "$HOME/documents" || exit 1
+  fd --type f . | rofi -dmenu -i -p "documents"
+) || exit 0
+
+[ -n "$file" ] || exit 0
+exec alacritty -e nvim "$HOME/documents/$file"

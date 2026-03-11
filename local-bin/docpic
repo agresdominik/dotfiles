@@ -1,0 +1,9 @@
+#!/bin/sh
+cd "$HOME/documents" || exit 1
+
+fd --type f . |
+  fzf \
+    --scheme=path \
+    --prompt='documents> ' \
+    --preview 'bat --style=numbers --color=always --line-range :300 {}' \
+    --bind 'enter:become(nvim {})'

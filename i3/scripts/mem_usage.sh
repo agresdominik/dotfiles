@@ -1,7 +1,7 @@
 #!/bin/sh
 
 used=$(free -h --si | awk '/^Mem/ {print $3}')
-total=$(free -h --si | awk '/^Mem/ {print $2}')
+total="32G"
 
 text="${used}/${total}"
 

@@ -6,7 +6,7 @@ font pango:MesloLGL Nerd Font Mono 8
 # Start basic functionality apps
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id nm-applet
-exec --no-startup-id xautolock -time 30 -locker "/home/agres/.config/i3/scripts/lock.sh"
+exec --no-startup-id xautolock -time 120 -locker "/home/agres/.config/i3/scripts/lock.sh"
 
 # Keyboard quick buttons
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -25,6 +25,8 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec --no-startup-id rofi -show run -theme solarized
+bindsym $mod+s exec --no-startup-id ~/.local/bin/docpic-rofi
+
 
 # change focus
 bindsym $mod+j focus down
@@ -71,6 +73,9 @@ bindsym $mod+space focus mode_toggle
 #bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
+
+#Stop focus from wrapping around edges (stay on last window in that direction)
+focus_wrapping no
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -207,8 +212,10 @@ exec --no-startup-id xset dpms 7200 7200 7200
 exec --no-startup-id picom
 # Start notification tool
 exec --no-startup-id dunst
+# Start librepods
+#exec --no-startup-id /home/agres/other/build/librepods-main/linux/build/librepods --hide
 
-default_border pixel 1
+default_border pixel 4
 default_floating_border normal 0
 
 # Window overlay theme
@@ -220,12 +227,13 @@ set $g4 #4A4A4A
 set $g5 #BFBFBF
 set $g6 #E6E6E6
 set $accent #808080
+set $ws_accent #00675a
 
 # --- Window decoration colors ---
 # Format: client.<state> <border> <background> <text> <indicator> <child_border>
-client.focused          $g2 $g2 $g6 $accent $g2
-client.focused_inactive $g1 $g1 $g5 $g3    $g1
-client.unfocused        $g0 $g0 $g5 $g3    $g0
+client.focused          $ws_accent $ws_accent $g6 $accent $ws_accent
+client.focused_inactive $g3 $g3 $g5 $g3    $g3
+client.unfocused        $g3 $g3 $g5 $g3    $g3
 client.urgent           #5F1F1F #5F1F1F $g6 #B35C5C #5F1F1F
 client.placeholder      $g0 $g0 $g5 $g3    $g0
 client.background       $g0

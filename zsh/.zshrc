@@ -55,6 +55,9 @@ alias tn='tmux new -s'
 alias tl='tmux ls'
 alias tk='tmux kill-session -t'
 
+# Pdf alias
+alias pdf='zathura'
+
 export GPG_TTY=$(tty)
 
 # Fix unreadable color pallete for ExFat File systems
