@@ -13,7 +13,6 @@ case "$HOST" in
 esac
 
 source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -58,8 +57,13 @@ alias tk='tmux kill-session -t'
 # Pdf alias
 alias pdf='zathura'
 
+# GPG TTY Fix 
 export GPG_TTY=$(tty)
 
 # Fix unreadable color pallete for ExFat File systems
 LS_COLORS="$LS_COLORS:ow=01;36:"
 export LS_COLORS
+
+# Add local and global bin files to path
+export PATH="/home/agres/.npm-global/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"

@@ -9,3 +9,6 @@ export GOBIN=$HOME/.local/go/bin
 export PATH=$PATH:$GOBIN
 export PATH="$HOME/.local/bin:$PATH"
 
+# -- FzF ---
+source /usr/share/fzf/completion.zsh
+

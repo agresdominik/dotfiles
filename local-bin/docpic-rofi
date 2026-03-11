@@ -5,4 +5,14 @@ file=$(
 ) || exit 0
 
 [ -n "$file" ] || exit 0
-exec alacritty -e nvim "$HOME/documents/$file"
+
+path="$HOME/documents/$file"
+
+case "$path" in
+  *.pdf|*.PDF)
+    exec zathura "$path"
+    ;;
+  *)
+    exec alacritty -e nvim "$path"
+    ;;
+esac
