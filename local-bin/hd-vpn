@@ -1,0 +1,5 @@
+sudo openconnect -vvvv --timestamp --dump-http-traffic \
+  --protocol=anyconnect \
+  --useragent='AnyConnect' \
+  --gnutls-priority="NORMAL:-VERS-ALL:+VERS-TLS1.2:+RSA:+AES-128-CBC:+SHA1" \
+  vpn-ac.uni-heidelberg.de/2fa
